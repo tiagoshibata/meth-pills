@@ -12,12 +12,17 @@ _Noreturn void fatal(const char *message) {
 }
 
 int main(/* int argc, char **argv */) {
-    const char *resource = "/sys/bus/pci/devices/0000:00:01.0/0000:01:00.0/resource0";
+    const char *resource = "/sys/bus/pci/devices/0000:01:00.0/resource0";
     int fd = open(resource, O_RDWR);
     if (fd == -1)
         fatal("open");
 
     volatile uint32_t *pfb_fbpa = mmap(NULL, 0x4000, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0x9A0000);
-    if (pfb_fbpa == NULL)
+    if (pfb_fbpa == MAP_FAILED)
         fatal("mmap");
+
+#define NV_PFB_FBPA_MAGIC_1 (0x29c / 4)
+
+    printf("NV_PFB_FBPA[0x29c] = %x", pfb_fbpa[NV_PFB_FBPA_MAGIC_1]);
+    return 0;
 }
