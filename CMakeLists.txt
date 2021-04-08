@@ -19,6 +19,7 @@ if (CMAKE_C_COMPILER_ID MATCHES "Clang|GNU")
     string(REPLACE -O3 -Ofast CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE}")
 endif()
 
+add_compile_definitions(_XOPEN_SOURCE=700)
 add_executable(meth-pills
         main.c
 )
