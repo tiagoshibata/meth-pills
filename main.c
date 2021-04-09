@@ -14,7 +14,11 @@ _Noreturn void fatal(const char *message) {
 }
 
 int main(/* int argc, char **argv */) {
+#if 0
     const char *resource = "/sys/bus/pci/devices/0000:01:00.0/resource0";
+#else
+    const char *resource = "/sys/bus/pci/devices/0000:08:00.0/resource0";
+#endif
     int fd = open(resource, O_RDWR);
     if (fd == -1)
         fatal("Failed to open device");
