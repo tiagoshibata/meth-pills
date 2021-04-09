@@ -13,7 +13,23 @@ _Noreturn void fatal(const char *message) {
     exit(-1);
 }
 
-int main(/* int argc, char **argv */) {
+_Noreturn void help() {
+    puts("Usage: meth-pills [-l] [-s] [-d device] [pci_device[=t0,t1 ...]]\n"
+         "  -l    list devices and show the timings of safe devices, then quit\n"
+         "  -s    use \"safer\"/slower timings. Use if your GPU isn't stable with the default safe timings\n"
+         "  pci_device=t0,t1    if no devices are given, run on all safe devices with \"safe\" timings. If devices are given, run on specified devices only. You can also set custom timings for specified devices. Devices must be identified by their full PCI path, as given in /sys/bus/pci/devices (domain:bus:slot:function, e.g. 0000:08:00.0)\n\n"
+         "Examples:\n"
+         "  $ meth-pills -l\nList devices and timings of safe devices\n\n"
+         "  $ meth-pills 0000:08:00.0=15,3\nRun only on 0000:08:00.0 with timings of 15 and 3\n\n"
+         "To help identify devices and their addresses, run \"lspci\" or \"lspci -v\". lspci has a database of devices and manufacturers and can help you tell your cards apart\n"
+         "If meth-pills works on your card, please report it at https://github.com/tiagoshibata/meth-pills/issues so it can be added to the safe list");
+    exit(0);
+}
+
+
+int main(int argc, char **argv) {
+    puts("");
+    open("/sys/bus/pci/devices", O_DIRECTORY);
 #if 0
     const char *resource = "/sys/bus/pci/devices/0000:01:00.0/resource0";
 #else
@@ -25,7 +41,7 @@ int main(/* int argc, char **argv */) {
 
     volatile uint32_t *pfb_fbpa = mmap(NULL, 0x4000, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0x9A0000);
     if (pfb_fbpa == MAP_FAILED)
-        fatal("Failed to map device to memory. This can happen if it's locked by the kernel; to run meth-pills, boot your kernel with the iomem=relaxed parameter, which allows userspace access to devices in use by the kernel\nmmap");
+        fatal("Failed to map device to memory. This can happen if it's locked by the kernel; boot your kernel with the iomem=relaxed parameter, which allows userspace access to devices in use by kernel drivers\nmmap");
 
 #define NV_PFB_FBPA_MAGIC_1 (0x29c / 4)
 #define NV_PFB_FBPA_MAGIC_2 (0x2a0 / 4)
