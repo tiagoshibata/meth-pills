@@ -8,6 +8,8 @@
 #include <sys/types.h>
 #include <time.h>
 
+#include "pci.h"
+
 _Noreturn void fatal(const char *message) {
     perror(message);
     exit(-1);
@@ -28,6 +30,12 @@ _Noreturn void help() {
 
 
 int main(int argc, char **argv) {
+    init_pci();
+    list_devices();
+    char *devices[] = {"0000:08:00.0", NULL};
+    run_on_pci_devices(devices);
+    return 0;
+
     puts("");
     open("/sys/bus/pci/devices", O_DIRECTORY);
 #if 0
