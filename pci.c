@@ -114,6 +114,8 @@ void run_on_pci_nvidia_gpus(void(*callback)(int), int safe_only) {
                             callback(fd);
                     }
                 }
+                if (close(fd))
+                    perror("close");
             }
             pos += dir->d_reclen;
         }

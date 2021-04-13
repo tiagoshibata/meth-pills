@@ -68,6 +68,7 @@ static void list_callback(int fd) {
     if (pfb_fbpa == MAP_FAILED)
         return;
     printf("\tt0 = %" PRIu16 ", t1 = %" PRIu16 "\n", get_t0_from_register(pfb_fbpa[T0_REG]), get_t1_from_register(pfb_fbpa[T1_REG]));
+    munmap((void*)pfb_fbpa, 0x4000);
 }
 
 static void set_timings(int fd, uint32_t t0, uint32_t t1) {
@@ -86,6 +87,7 @@ static void set_timings(int fd, uint32_t t0, uint32_t t1) {
         puts("Updating t1");
         pfb_fbpa[T1_REG] = write_t1_to_register(t1_register, t1);
     }
+    munmap((void*)pfb_fbpa, 0x4000);
 }
 
 static uint32_t desired_t0 = 16, desired_t1 = 4;
@@ -142,6 +144,8 @@ int main(int argc, char **argv) {
                 if (timing_separator)
                     *timing_separator = '=';
                 set_timings(fd, t0, t1);
+                if (close(fd))
+                    perror("close");
             }
         }
         sleep(5);
