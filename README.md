@@ -2,6 +2,8 @@
 
 Meth (maximum ETH) pills are free, open source software to tweak GDDR5X memory timings on NVIDIA GPUs.
 
+### The project works, but it's new and will have breaking changes. You will need to tweak it for cards other than GTX 1080s
+
 ## Why?
 
 GDDR5X and other new memory types have higher peak bandwidth for faster transfers of e.g. large textures, but generally have worse latency. ETH mining does mostly small random accesses, which are greatly impacted by the higher latency.
@@ -27,6 +29,7 @@ Only GTX 1080s were tested. If you have other cards, please open an issue report
 
 * Free, open source software that you can audit and build yourself. Some of the other mining improvement projects either have fees, or have been discontinued and don't have a reliable source to download from
 * Re-scans PCI devices every 5 seconds to re-inject timings if e.g. your miner is restarted, or if new cards are added
+* Much more granular control of each timing to find the best and most reliable setup
 * Miner independent; works on any miner and frees you from dev fees. You can now have top performance using the open source miners, too!
 * Our goal is to be community built to have optimal timings for as many cards as possible, using community reporting of cards and timings that work well. Let's all make mining more efficient and improve on existing hardware!
 
