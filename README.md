@@ -49,6 +49,6 @@ The software was developed by watching PCI reads and writes and doing a lot of t
 
 ## Is it really free?
 
-Yes. Though if you'd like to support us, you can donate to 0x68bb64565f4fac6aecf406e127dbe04ef3e567d9 , mine a bit at `stratum1+tcp://sp_otmcc.youralias@eth-us.sparkpool.com:3333`, or just leave a star on GitHub :)
+Yes. Though if you'd like to support us, you can donate ETH to 0x68bb64565f4fac6aecf406e127dbe04ef3e567d9 , mine a bit at `stratum1+tcp://sp_otmcc.youralias@eth-us.sparkpool.com:3333`, or just leave a star on GitHub :)
 
 ![Wallet address](wallet.png)
