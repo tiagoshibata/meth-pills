@@ -78,11 +78,11 @@ static void set_timings(int fd, uint32_t t0, uint32_t t1) {
     uint32_t t0_register = pfb_fbpa[T0_REG], t1_register = pfb_fbpa[T1_REG];
     uint32_t current_t0 = get_t0_from_register(t0_register), current_t1 = get_t1_from_register(t1_register);
     printf("\tt0 = %" PRIu16 " (desired: %" PRIu16 "), t1 = %" PRIu16 " (desired: %" PRIu16 ")\n", current_t0, t0, current_t1, t1);
-    if (current_t0 > t0) {
+    if (current_t0 != t0) {
         puts("Updating t0");
         pfb_fbpa[T0_REG] = write_t0_to_register(t0_register, t0);
     }
-    if (current_t1 > t1) {
+    if (current_t1 != t1) {
         puts("Updating t1");
         pfb_fbpa[T1_REG] = write_t1_to_register(t1_register, t1);
     }
