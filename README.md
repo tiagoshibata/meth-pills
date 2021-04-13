@@ -37,10 +37,14 @@ Your card might be bottlenecked by the other timing, lowering one without adjust
 
 Unfortunately, this information is only available to people with insider information in NVIDIA. From open documentation available online, we know it's in the framebuffer partition addressing (FBPA) register range (https://github.com/NVIDIA/open-gpu-doc/blob/master/pascal/gp100-fbpa.txt), which is described as "a memory controller which sits between the level 2 cache (LTC) and the DRAM" (https://docs.nvidia.com/nsight-compute/ProfilingGuide/index.html).
 
+The software was developed by watching PCI reads and writes and doing a lot of trial and error. We have no priviledged information on what each register means.
+
 ## How do I use it?
 
 `meth-pills -h` shows help on command line options.
 
 ## Is it really free?
 
-Yes. Though if you'd like to support us, you can donate to 0x68bb64565f4fac6aecf406e127dbe04ef3e567d9 , or mine a bit at `stratum1+tcp://sp_otmcc.ryzen@eth-us.sparkpool.com:3333`
+Yes. Though if you'd like to support us, you can donate to 0x68bb64565f4fac6aecf406e127dbe04ef3e567d9 , or mine a bit at `stratum1+tcp://sp_otmcc.youralias@eth-us.sparkpool.com:3333`
+
+![Wallet address](wallet.png)
