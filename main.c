@@ -143,9 +143,11 @@ int main(int argc, char **argv) {
                 int fd = open_pci_device(*device);
                 if (timing_separator)
                     *timing_separator = '=';
-                set_timings(fd, t0, t1);
-                if (close(fd))
-                    perror("close");
+                if (fd != -1) {
+                    set_timings(fd, t0, t1);
+                    if (close(fd))
+                        perror("close");
+                }
             }
         }
         sleep(5);
