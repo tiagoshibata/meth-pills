@@ -6,18 +6,22 @@ Meth (maximum ETH) pills are free, open source software to tweak GDDR5X memory t
 
 ## Why?
 
-GDDR5X and other new memory types have higher peak bandwidth for faster transfers of e.g. large textures, but generally have worse latency. ETH mining does mostly small random accesses, which are greatly impacted by the higher latency.
+GDDR5X and other new memory types have higher peak bandwidth for faster transfers of e.g. large textures, but generally have worse latency. ETH mining does mostly small random accesses, which are greatly impacted by the higher latency. meth-pills adjust the memory timings to optimal values for mining.
 
 ## What kind of improvement should I expect?
 
-Meth pills improve hashrate and efficiency greatly, with a hashrate improvement of almost 50% and a hashrate per Watt improvement of over 100% in a GTX 1080 when compared to stock settings.
+Meth pills improve hashrate and efficiency greatly, with a hashrate improvement of almost 50% and a hashrate per Watt improvement of 20% in a GTX 1080 when compared to stock settings.
+
+GTX 1080:
 
 | Timings t0,t1 | Power | Hashrate/s | Efficiency     |
 |---------------|-------|------------|----------------|
-| 20,6 (stock)  | 130 W | 12.33 Mh   | 94.8 Kh/(s*W)  |
+| 20,6 (stock)  | 130 W | 21.33 Mh   | 164.1 Kh/(s*W) |
 | 20,5          | 134 W | 23.19 Mh   | 137.1 Kh/(s*W) |
 | 20,4          | 142 W | 25.57 Mh   | 180.1 Kh/(s*W) |
 | 16,4          | 155 W | 30.53 Mh   | 197.0 Kh/(s*W) |
+
+[User report on GTX 1050 Ti](https://github.com/tiagoshibata/meth-pills/issues/4)
 
 ## Which cards are supported?
 
