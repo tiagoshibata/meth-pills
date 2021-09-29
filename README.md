@@ -21,7 +21,7 @@ Meth pills improve hashrate and efficiency greatly, with a hashrate improvement 
 
 ## Which cards are supported?
 
-Only Pascal and newer cards are supported. Cards with memory older than GDDR5X might have no noticeable improvement.
+Only Pascal and newer cards are supported. Cards with memory older than GDDR5X (e.g. GTX 1070 models with GDDR5) will most likely have no improvement.
 
 Only GTX 1080s were tested. If you have other cards, please open an issue reporting your success and what timings work. When running in new cards, start with conservative timings (close to stock values) and gradually decrease them.
 

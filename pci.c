@@ -33,7 +33,8 @@ void init_pci() {
 static ssize_t read_at(int at_fd, const char *pathname, char *buffer, size_t count) {
     int fd = openat(at_fd, pathname, O_RDONLY);
     if (fd == -1) {
-        fprintf(stderr,"Failed to open %s\nopenat: %s", pathname, strerrordesc_np(errno));
+        fprintf(stderr,"Failed to open %s\n", pathname);
+        perror("openat");
         return -1;
     }
     ssize_t bytes_read = read(fd, buffer, count);
